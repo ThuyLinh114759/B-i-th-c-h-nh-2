@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct {
+    char hoten[30];
+    int masv;
+    float d1, d2, d3;
+} SV;
+
+int main() {
+    int n, i;
+    SV *a;
+
+    printf("Nhap so sinh vien: ");
+    scanf("%d", &n);
+
+    a = (SV *)malloc(n * sizeof(SV));
+
+    if (a == NULL) {
+        printf("Khong du bo nho!");
+        return 1;
+    }
+
+    for (i = 0; i < n; i++) {
+        printf("\nSinh vien thu %d:\n", i + 1);
+
+        printf("Nhap ho ten: ");
+        scanf(" %[^\n]", (a + i)->hoten);
+
+        printf("Nhap ma sinh vien: ");
+        scanf("%d", &(a + i)->masv);
+
+        printf("Nhap diem 1, diem 2, diem 3: ");
+        scanf("%f%f%f", &(a + i)->d1,
+                        &(a + i)->d2,
+                        &(a + i)->d3;
+    }
+
+    printf("\nDanh sach sinh vien:\n");
+    for (i = 0; i < n; i++) {
+        printf("\nHo ten: %s", (a + i)->hoten);
+        printf("\nMa sinh vien: %d", (a + i)->masv);
+        printf("\nDiem 1: %.2f", (a + i)->d1);
+        printf("\nDiem 2: %.2f", (a + i)->d2);
+        printf("\nDiem 3: %.2f\n", (a + i)->d3);
+    }
+
+    free(a);
+
+    return 0;
+}
